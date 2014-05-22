@@ -28,7 +28,7 @@ vagrant provision
 Export the VM
 ---------------
 
-Create the box with:
+[Create the box](https://docs.vagrantup.com/v2/virtualbox/boxes.html) with:
 ```
 vagrant package
 ```
