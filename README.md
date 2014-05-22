@@ -18,6 +18,13 @@ If something fails, you always can run Ansible again:
 vagrant provision
 ```
 
+TODO
+------
+
+ * Change root password
+ * Convert VirtualBox image to other formats (vmx, raw, qcow...)
+ * Use empty Debian Wheezy base images (amd64 and i386)
+ * Test it with an empty Ubuntu Server 14.04 LTS image
 
 Troubleshooting
 -----------------
