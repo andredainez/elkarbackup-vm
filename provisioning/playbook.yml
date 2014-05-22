@@ -2,7 +2,7 @@
 - hosts: elkarbackup
   
   vars:
-    - root_password: 'elkarbackup'
+    - root_password: '$6$rounds=100000$jnFsIZUdGtCNMuxe$ZlWJFAKkrPB8UoBRFEtyTXEoRnVPByiIkispYF.VRCS67CRinaTvPixeRcduuKzHd15UMpy4qQ6uDls24Dro4/'
     - mysql_root_password: 'elkarbackup'
 
   tasks:
@@ -90,5 +90,5 @@
         - elkarbackup
 
     - name: change root password
-      user: name=root password={{ root_password }}
+      user: name=root password={{ root_password }} update_password=always
       sudo: yes
