@@ -23,13 +23,17 @@
         - php5
         - php5-cli
         - rsnapshot
-        - mysql-server
         - php5-mysql
         - acl
         - bzip2
         - python-mysqldb
         - python-pycurl
         - debconf-utils
+
+    - name: mysql server installation
+      apt: pkg=mysql-server state=latest
+      sudo: yes
+      register: mysqlinstall
 
     - name: change mysql root password
       mysql_user: name=root host={{ item }} password={{ mysql_root_password }}
@@ -39,6 +43,7 @@
         - ::1
         - localhost
       sudo: yes
+      when: mysqlinstall|changed
 
     - name: add elkarbackup repo key
       apt_key: url=http://elkarbackup.org/apt/archive.gpg.key state=present
