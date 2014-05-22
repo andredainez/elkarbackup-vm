@@ -2,7 +2,7 @@
 - hosts: elkarbackup
   
   vars:
-    - root_pasword: 'elkarbackup'
+    - root_password: 'elkarbackup'
     - mysql_root_password: 'elkarbackup'
 
   tasks:
