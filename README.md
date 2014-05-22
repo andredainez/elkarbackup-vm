@@ -1,7 +1,7 @@
 elkarbackup-vm
 ==============
 
-We are using Vagrant&Ansible to generate Elkarbackup virtual machine:
+We are using [Vagrant](http://www.vagrantup.com/) & [Ansible](http://www.ansible.com/home) to generate Elkarbackup virtual machine:
 
 VM generation
 ---------------
