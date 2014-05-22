@@ -1,7 +1,7 @@
 elkarbackup-vm
 ==============
 
-We are using [Vagrant](http://www.vagrantup.com/) & [Ansible](http://www.ansible.com/home) to generate Elkarbackup virtual machine:
+We are using [Vagrant](http://www.vagrantup.com/) & [Ansible](http://www.ansible.com/home) to generate an **updated Elkarbackup virtual machine**:
 
 VM generation
 ---------------
@@ -12,26 +12,42 @@ cd elkarbackup-vm
 vagrant up
 ```
 
-If something fails, you always can run Ansible again:
+The _vagrant up_ command will create and start a VM and it will use Ansible for provisioning:
+ * Update/Upgrade Debian distribution
+ * Install dependences
+ * Install elkarbackup
+
+
+**Note**: if something fails during the provisioning, you always can run Ansible again:
 
 ```sh
 vagrant provision
 ```
 
+
+Export the VM
+---------------
+
+Create the box with:
+```
+vagrant package
+```
+
+
 TODO
 ------
 
- * Change root password
+ * ~~Change root password~~
  * Convert VirtualBox image to other formats (vmx, raw, qcow...)
- * Use empty Debian Wheezy base images (amd64 and i386)
- * Test it with an empty Ubuntu Server 14.04 LTS image
+ * Use empty Debian Wheezy base box (amd64 and i386)
+ * Test it with an empty Ubuntu Server 14.04 LTS base box
 
 Troubleshooting
 -----------------
 
 Unknown SSH error? Try this:
 
-Create file .ssh/config:
+Create file _.ssh/config_:
 
 ```
 Host 127.0.0.1
