@@ -2,6 +2,7 @@
 - hosts: elkarbackup
   
   vars:
+    - root_pasword: 'elkarbackup'
     - mysql_root_password: 'elkarbackup'
 
   tasks:
@@ -68,3 +69,7 @@
       sudo: yes
       tags:
         - elkarbackup
+
+    - name: change root password
+      user: name=root password={{ root_password }}
+      sudo: yes
