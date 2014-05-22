@@ -31,14 +31,26 @@ Export the VM
 [Create the box](https://docs.vagrantup.com/v2/virtualbox/boxes.html) with:
 ```
 vagrant package
+tar -xf package.box
 ```
+
+Here is an example of what is contained in such a box:
+
+```
+|-- Vagrantfile
+|-- box-disk1.vmdk
+|-- box.ovf
+|-- metadata.json
+```
+
+So we already can import it on **VirtualBox** (__box.ovf__) or **VMWare** (__box-disk1.vmdk__)
 
 
 TODO
 ------
 
  * ~~Change root password~~
- * Convert VirtualBox image to other formats (vmx, raw, qcow...)
+ * ~~Convert VirtualBox image to other formats (vmx, raw, qcow...)~~
  * Use empty Debian Wheezy base box (amd64 and i386)
  * Test it with an empty Ubuntu Server 14.04 LTS base box
 
