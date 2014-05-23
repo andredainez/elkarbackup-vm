@@ -3,38 +3,34 @@ elkarbackup-vm
 
 We are using [Vagrant](http://www.vagrantup.com/) & [Ansible](http://www.ansible.com/home) to generate an **updated Elkarbackup virtual machine**:
 
+Tested environment:
+ * VirtualBox 4.1.12
+ * Vagrant 1.6.2
+ * Ansible 1.6
+
 VM generation
 ---------------
 
 ```sh
 git clone https://github.com/xezpeleta/elkarbackup-vm.git
 cd elkarbackup-vm
-vagrant up
+./build.sh
 ```
 
-The _vagrant up_ command will create and start a VM and it will use Ansible for provisioning:
- * Update/Upgrade Debian distribution
- * Install dependences
- * Install elkarbackup
+The script will:
+ * Update/upgrade base Debian distribution
+ * Install base dependences
+ * Install ElkarBackup dependences
+ * Install ElkarBackup
+ * Change mysql root password
+ * Change system root password
+ * Generate importable VM files in _./build_ directory
 
 
-**Note**: if something fails during the provisioning, you always can run Ansible again:
+Using generated VM images
+--------------------------
 
-```sh
-vagrant provision
-```
-
-
-Export the VM
----------------
-
-[Create the box](https://docs.vagrantup.com/v2/virtualbox/boxes.html) with:
-```
-vagrant package
-tar -xf package.box
-```
-
-Here is an example of what is contained in such a box:
+Here is an example of what is contained in _./build_ directory:
 
 ```
 |-- Vagrantfile
@@ -51,7 +47,7 @@ TODO
 
  * ~~Change root password~~
  * ~~Convert VirtualBox image to other formats (vmx, raw, qcow...)~~
- * Use empty Debian Wheezy base box (amd64 and i386)
+ * ~~Use empty Debian Wheezy base box (amd64)~~
  * Test it with an empty Ubuntu Server 14.04 LTS base box
 
 Troubleshooting
