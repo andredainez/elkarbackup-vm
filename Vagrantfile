@@ -3,8 +3,8 @@
 
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "elkarbackup-201405"
-  config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/debian-73-x64-virtualbox-puppet.box"
+  config.vm.box = "xezpeleta/wheezy64"
+  #config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/debian-73-x64-virtualbox-puppet.box"
   config.vm.network :private_network, ip: "192.168.33.10"
   #config.vm.provider :virtualbox do |vb|
   #  vb.gui = true
