@@ -57,35 +57,35 @@
     - name: add elkarbackup repo key
       apt_key: url=http://elkarbackup.org/apt/archive.gpg.key state=present
       sudo: yes
-      when: not elkarbackup_installed
+      when: elkarbackup_installed|failed
       tags:
         - elkarbackup
 
     - name: add elkarbackup repository
       apt_repository: repo='deb http://elkarbackup.org/apt/debian wheezy main' state=present
       sudo: yes
-      when: not elkarbackup_installed
+      when: elkarbackup_installed|failed
       tags:
         - elkarbackup
 
     - name: preconfigure elkarbackup 1/2 - dbadminname
       debconf: name=elkarbackup question='elkarbackup/dbadminname' value='root' vtype=string
       sudo: yes
-      when: not elkarbackup_installed
+      when: elkarbackup_installed|failed
       tags:
         - elkarbackup
 
     - name: preconfigure elkarbackup 2/2 - dbadminpassword
       debconf: name=elkarbackup question='elkarbackup/dbadminpassword' value={{ mysql_root_password }} vtype=password
       sudo: yes
-      when: not elkarbackup_installed
+      when: elkarbackup_installed|failed
       tags:
         - elkarbackup
 
     - name: elkarbackup installation
       apt: pkg=elkarbackup state=present
       sudo: yes
-      when: not elkarbackup_installed
+      when: elkarbackup_installed|failed
       tags:
         - elkarbackup
 
