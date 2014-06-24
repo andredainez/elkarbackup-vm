@@ -8,11 +8,22 @@ Tested environment:
  * Vagrant 1.6.2
  * Ansible 1.6
 
-VM generation
+VM generation for development testing purposes
 ---------------
 
 ```sh
-git clone https://github.com/xezpeleta/elkarbackup-vm.git
+git clone https://github.com/elkarbackup/elkarbackup-vm.git
+cd elkarbackup-vm
+vagrant up
+vagrant provision
+vagrant ssh
+```
+
+VM generation for fast deployment
+---------------
+
+```sh
+git clone https://github.com/elkarbackup/elkarbackup-vm.git
 cd elkarbackup-vm
 ./build.sh
 ```
