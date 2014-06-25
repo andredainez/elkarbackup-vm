@@ -8,6 +8,7 @@ Required:
  * Vagrant 1.6.2 or newer
  * Ansible 1.6 or newer
 
+
 VM generation for development testing purposes
 ---------------
 
@@ -15,9 +16,21 @@ VM generation for development testing purposes
 git clone https://github.com/elkarbackup/elkarbackup-vm.git
 cd elkarbackup-vm
 vagrant up
-vagrant provision
 vagrant ssh
 ```
+
+**Any problem? Try with: `vagrant provision`
+
+The script will:
+ * Update/upgrade base Debian distribution
+ * Install base dependences
+ * Install ElkarBackup dependences
+ * Install ElkarBackup
+ * Change mysql root password
+ * Change system root password
+
+You can access to ElkarBackup: http://192.168.33.10
+
 
 VM generation for fast deployment
 ---------------
@@ -28,14 +41,7 @@ cd elkarbackup-vm
 ./build.sh
 ```
 
-The script will:
- * Update/upgrade base Debian distribution
- * Install base dependences
- * Install ElkarBackup dependences
- * Install ElkarBackup
- * Change mysql root password
- * Change system root password
- * Generate importable VM files in _./build_ directory
+The script will generate ElkarBackup importable VM files in _./build_ directory
 
 
 Using generated VM images
