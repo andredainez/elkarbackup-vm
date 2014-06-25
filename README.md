@@ -3,10 +3,10 @@ elkarbackup-vm
 
 We are using [Vagrant](http://www.vagrantup.com/) & [Ansible](http://www.ansible.com/home) to generate an **updated Elkarbackup virtual machine**:
 
-Tested environment:
- * VirtualBox 4.1.12
- * Vagrant 1.6.2
- * Ansible 1.6
+Required:
+ * VirtualBox 4.1.12 or newer
+ * Vagrant 1.6.2 or newer
+ * Ansible 1.6 or newer
 
 VM generation for development testing purposes
 ---------------
