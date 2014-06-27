@@ -1,0 +1,10 @@
+- name: install dependencies
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - debconf
+    - php5
+    - php5-cli
+    - rsnapshot
+    - php5-mysql
+    - acl
+    - bzip2

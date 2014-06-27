@@ -1,0 +1,37 @@
+- name: check if elkarbackup is already installed
+  shell: dpkg -l elkarbackup > /dev/null 2> /dev/null
+  changed_when: false
+  register: elkarbackup_installed
+  ignore_errors: true
+  tags:
+    - elkarbackup
+
+- name: add elkarbackup repo key
+  apt_key: url=http://elkarbackup.org/apt/archive.gpg.key state=present
+  when: elkarbackup_installed|failed
+  tags:
+    - elkarbackup
+
+- name: add elkarbackup repository
+  apt_repository: repo='deb http://elkarbackup.org/apt/debian wheezy main' state=present
+  when: elkarbackup_installed|failed
+  tags:
+    - elkarbackup
+
+- name: preconfigure elkarbackup 1/2 - dbadminname
+  debconf: name=elkarbackup question='elkarbackup/dbadminname' value='root' vtype=string
+  when: elkarbackup_installed|failed
+  tags:
+    - elkarbackup
+
+- name: preconfigure elkarbackup 2/2 - dbadminpassword
+  debconf: name=elkarbackup question='elkarbackup/dbadminpassword' value={{ mysql_root_password }} vtype=password
+  when: elkarbackup_installed|failed
+  tags:
+    - elkarbackup
+
+- name: elkarbackup installation
+  apt: pkg=elkarbackup state=present
+  when: elkarbackup_installed|failed
+  tags:
+    - elkarbackup
