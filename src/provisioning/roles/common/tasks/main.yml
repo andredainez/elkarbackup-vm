@@ -3,3 +3,5 @@
 - include: upgrade.yml
 - include: ansible-requirements.yml
 - include: change-root-passwd.yml root_password={{ root_password }}
+- include: delete-packages.yml
+- include: change-hostname.yml
