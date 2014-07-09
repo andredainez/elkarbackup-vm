@@ -7,6 +7,15 @@ IMGDIR="./images"
 echo "Creating and provisioning $BOXNAME over $DISTRO..."
 
 d=$(pwd)
+
+find $d -name ".vagrant" -prune -exec rm -fR {} \;
+if [ -d $d/$IMGDIR ];then
+    rm -R $d/$IMGDIR
+    if [ -d $d/$IMGDIR ]; then
+        echo "Cancelled!"
+    fi
+fi
+
 cd $d/src/$DISTRO
 up=`vagrant up`
 
@@ -26,22 +35,6 @@ if [ "$up" ];then
       mkdir $d/$IMGDIR/kvm
       mkdir $d/$IMGDIR/virtualbox
       mkdir $d/$IMGDIR/vmware
-    else
-      if [ ! -d "$d/$IMGDIR/vagrant" ];then
-        mkdir $d/$IMGDIR/vagrant
-      fi
-
-      if [ ! -d "$d/$IMGDIR/kvm" ];then
-        mkdir $d/$IMGDIR/kvm
-      fi
-
-      if [ ! -d "$d/$IMGDIR/virtualbox" ];then
-        mkdir $d/$IMGDIR/virtualbox
-      fi
-
-      if [ ! -d "$d/$IMGDIR/vmware" ];then
-        mkdir $d/$IMGDIR/vmware
-      fi
     fi
 
     echo "Creating box package..."
