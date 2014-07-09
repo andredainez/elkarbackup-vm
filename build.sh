@@ -4,22 +4,39 @@ DISTRO="wheezy"
 BOXNAME="elkarbackup-vm"
 IMGDIR="./images"
 
-echo "Creating and provisioning $BOXNAME over $DISTRO..."
+echo "Clean..."
 
 d=$(pwd)
 
 find $d -name ".vagrant" -prune -exec rm -fR {} \;
-if [ -d $d/$IMGDIR ];then
-    rm -R $d/$IMGDIR
-    if [ -d $d/$IMGDIR ]; then
+if [ -d "$d/$IMGDIR" ];then
+    echo "Delete $d/$IMGDIR directory"
+    rm -RI $d/$IMGDIR
+    if [ -d "$d/$IMGDIR" ]; then
         echo "Cancelled!"
+        exit
     fi
 fi
 
 cd $d/src/$DISTRO
-up=`vagrant up`
 
+
+if vagrant status|grep -q running; then
+    echo "Vagrant already running. Execute 'cd $d/src/$DISTRO vagrant destroy' and try again"
+    exit
+fi
+
+if VBoxManage list vms|grep -q elkarbackup; then
+    echo "VirtualBox VM with the same name detected. Delete it and try again"
+    exit
+fi
+
+
+echo "Creating and provisioning $BOXNAME over $DISTRO..."
+
+up=`vagrant up`
 echo "Up=$up"
+
 
 if [ ! "$up" ];then
     echo "ERROR: trying again with 'vagrant provision' command..."
