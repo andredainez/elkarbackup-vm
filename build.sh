@@ -23,6 +23,7 @@ if [ "$up" ];then
     if [ ! -d "$d/$IMGDIR" ]; then
       mkdir $d/$IMGDIR
       mkdir $d/$IMGDIR/vagrant
+      mkdir $d/$IMGDIR/kvm
       mkdir $d/$IMGDIR/virtualbox
       mkdir $d/$IMGDIR/vmware
     else
