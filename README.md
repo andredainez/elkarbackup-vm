@@ -10,9 +10,11 @@ Required:
 ## Instructions
 
 ```bash
-bootstrap.sh
-build.sh
+./bootstrap.sh
+./build.sh
 ```
+
+An updated ElkarBackup virtual machine, compatible with VirtualBox or VMWare, will be created on `output-vm/elkarbackup-vm.ova`
 
 ## Develop & Testing
 
