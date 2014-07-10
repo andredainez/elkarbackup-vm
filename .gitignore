@@ -1,3 +1,4 @@
 # Vagrant stuff
-.vagrant
-/images/
+/packer/
+/base-vm/
+/output-vm/
