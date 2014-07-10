@@ -18,7 +18,7 @@ else
         wget https://dl.bintray.com/mitchellh/packer/0.6.0_linux_amd64.zip
         unzip 0.6.0_linux_amd64.zip
     elif [ "$os" = "Darwin" ];then
-        wget https://dl.bintray.com/mitchellh/packer/0.6.0_darwin_amd64.zip
+        curl -L -O https://dl.bintray.com/mitchellh/packer/0.6.0_darwin_amd64.zip
         unzip 0.6.0_darwin_amd64.zip
     else
         echo "Not supported OS"
@@ -31,6 +31,12 @@ if [ -d "$d/base-vm" ]; then
     echo "Base VM already exists?"
 else
     mkdir $d/base-vm && cd $d/base-vm
-    wget -c $URL_BASEVM
+    if [ "$os" = "Linux" ];then
+        wget -c $URL_BASEVM
+    elif [ "$os" = "Darwin" ];then
+        curl -L -O $URL_BASEVM
+    else
+        echo "Not supported OS"
+    fi
     tar xzvf wheezy64.tar.gz
 fi
