@@ -4,6 +4,7 @@ URL_BASEVM='http://ftp.tknika.net/elkarbackup/wheezy64.tar.gz'
 
 
 d=$(pwd)
+os=`uname`
 
 # VirtualBox needed
 
@@ -13,8 +14,16 @@ if [ -d "$d/packer" ]; then
     echo "Packer.io already downloaded?"
 else
     mkdir $d/packer && cd $d/packer
-    wget https://dl.bintray.com/mitchellh/packer/0.6.0_linux_amd64.zip
-    unzip 0.6.0_linux_amd64.zip
+    if [ "$os" = "Linux" ];then
+        wget https://dl.bintray.com/mitchellh/packer/0.6.0_linux_amd64.zip
+        unzip 0.6.0_linux_amd64.zip
+    elif [ "$os" = "Darwin" ];then
+        wget https://dl.bintray.com/mitchellh/packer/0.6.0_darwin_amd64.zip
+        unzip 0.6.0_darwin_amd64.zip
+    else
+        echo "Not supported OS"
+        exit
+    fi
 fi
 
 # Download base VM
