@@ -11,15 +11,16 @@ os=`uname`
 
 # Download Packer
 if [ -d "$d/packer" ]; then
-    echo "Packer.io already downloaded?"
+    echo "Packer.io already downloaded"
+    echo "Nothing to do"
 else
     mkdir $d/packer && cd $d/packer
     if [ "$os" = "Linux" ];then
         wget https://dl.bintray.com/mitchellh/packer/0.6.0_linux_amd64.zip
-        unzip 0.6.0_linux_amd64.zip
+        unzip 0.6.0_linux_amd64.zip && rm -f 0.6.0_linux_amd64.zip
     elif [ "$os" = "Darwin" ];then
         curl -L -O https://dl.bintray.com/mitchellh/packer/0.6.0_darwin_amd64.zip
-        unzip 0.6.0_darwin_amd64.zip
+        unzip 0.6.0_darwin_amd64.zip && rm -f 0.6.0_darwin_amd64.zip
     else
         echo "Not supported OS"
         exit
@@ -28,7 +29,8 @@ fi
 
 # Download base VM
 if [ -d "$d/base-vm" ]; then
-    echo "Base VM already exists?"
+    echo "Base VM already exists"
+    echo "Nothing to do"
 else
     mkdir $d/base-vm && cd $d/base-vm
     if [ "$os" = "Linux" ];then
@@ -38,5 +40,5 @@ else
     else
         echo "Not supported OS"
     fi
-    tar xzvf wheezy64.tar.gz
+    tar xzvf wheezy64.tar.gz && rm -f wheezy64.tar.gz
 fi
