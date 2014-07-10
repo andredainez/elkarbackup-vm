@@ -1,10 +1,14 @@
 - hosts: all
-  sudo: True
+  #sudo: True
   vars:
-    - root_password: '$6$rounds=100000$jnFsIZUdGtCNMuxe$ZlWJFAKkrPB8UoBRFEtyTXEoRnVPByiIkispYF.VRCS67CRinaTvPixeRcduuKzHd15UMpy4qQ6uDls24Dro4/'
+    # root / elkarbackup
+    #- root_password: '$6$rounds=100000$jnFsIZUdGtCNMuxe$ZlWJFAKkrPB8UoBRFEtyTXEoRnVPByiIkispYF.VRCS67CRinaTvPixeRcduuKzHd15UMpy4qQ6uDls24Dro4/'
+    # root / root
+    - root_password: '$6$Z1X/85FMEnLV$f9oGKyUugTrzNhzUfbwnPEzMD3Y2vD1vwWzvnmLu0dGe8UKHF/5uJX8SLrFvQYPRpO7/liKkJR0KubikCTIkg1'
     - mysql_root_password: 'elkarbackup'
   
   roles:
     - { role: common, root_password: "{{ root_password }}" }
     - { role: mysql, mysql_root_password: "{{ mysql_root_password}}" }
     - { role: elkarbackup, version: stable}
+    #- { role: prepare-vm}
