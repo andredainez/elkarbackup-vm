@@ -16,6 +16,14 @@ Required:
 
 An updated ElkarBackup virtual machine, compatible with VirtualBox or VMWare, will be created on `output-vm/elkarbackup-vm.ova`
 
+### Other formats
+
+**KVM**
+```bash
+tar -xvf elkarbackup-vm.ova
+qemu-img convert -O qcow2 elkarbackup-vm-disk1.vmdk elkarbackup-vm.qcow2
+```
+
 ## Develop & Testing
 
 We also use this code for developing or testing purposes, thanks to [Vagrant](http://www.vagrantup.com)
