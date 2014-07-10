@@ -2,3 +2,4 @@
 /packer/
 /base-vm/
 /output-vm/
+.vagrant
