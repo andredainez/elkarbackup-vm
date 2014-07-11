@@ -49,9 +49,9 @@ $ vagrant up
 $ vagrant ssh
 ```
 
-You can modify ElkarBackup source on `/opt/elkarbackup` and you will see your changes immediatelly in your browser at http://192.168.33.10/elkarbackup
+It will last +10 min. After connecting, you can modify ElkarBackup source on `/vagrant/elkarbackup` and you will see your changes immediatelly in your browser at http://192.168.33.10/elkarbackup . Why `/vagrant/elkarbackup`? Just because VirtualBox will share it with your local computer!
 
-If you liked that, you'll love `vagrant share`! :)
+Note: if you liked that, you'll love `vagrant share`! :)
 
 ### Troubleshooting
 
