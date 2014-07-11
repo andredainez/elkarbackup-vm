@@ -1,0 +1,40 @@
+{
+  "variables": {
+    "username": "root",
+    "password": "root",
+	"mysql_root_password": "elkarbackup",
+	"hostname": "elkarbackup-vm"
+  },
+
+  "builders": [{
+    "type": "virtualbox-ovf",
+	"source_path": "base-vm/wheezy64.ova",
+	"ssh_username": "root",
+	"ssh_password": "root",
+	"ssh_wait_timeout": "60s",
+	"shutdown_command": "halt",
+	
+    "vm_name": "elkarbackup-vm",
+    "output_directory": "output-vm",
+	"format": "ova"
+  }],
+
+  "provisioners": [
+    {
+    "type": "shell",
+    "inline": [
+      "apt-get update",
+      "apt-get -y install python-pip python-dev",
+      "pip install ansible"
+    ]},
+    {
+      "type": "ansible-local",
+      "playbook_file": "provisioning/playbook.yml",
+      "role_paths": [
+          "provisioning/roles/common",
+          "provisioning/roles/mysql",
+          "provisioning/roles/elkarbackup"
+      ]
+    }
+  ]
+}
