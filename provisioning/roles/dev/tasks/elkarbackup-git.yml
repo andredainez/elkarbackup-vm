@@ -1,0 +1,29 @@
+- name: download elkarbackup from github
+  git: repo=https://github.com/antton/elkarbackup.git dest=/opt/elkarbackup
+
+- name: rename elkarbackup/src  dir
+  command: mv /usr/share/elkarbackup/src /usr/share/elkarbackup/bak.src
+
+- name: rename elkarbackup/web dir
+  command: mv /usr/share/elkarbackup/web /usr/share/elkarbackup/bak.web
+
+- name: link elkarbackup/src to last git code
+  file: src=/opt/elkarbackup/src dest=/usr/share/elkarbackup/src state=link
+
+- name: link elkarbackup/web to last git code
+  file: src=/opt/elkarbackup/web dest=/usr/share/elkarbackup/web state=link
+
+- name: rename git elkarbackup/app
+  command: mv /opt/elkarbackup/app /opt/elkarbackup/bak.app
+
+- name: link app
+  file: src=/usr/share/elkarbackup/app dest=/opt/elkarbackup/app state=link
+
+- name: clean cache
+  command: /usr/bin/php /usr/share/elkarbackup/app/console cache:clear
+
+- name: dump all assets
+  command: /usr/bin/php /usr/share/elkarbackup/app/console assetic:dump
+
+- name: invalidate sessions
+  command: rm -rf /var/lib/elkarbackup/sessions/*

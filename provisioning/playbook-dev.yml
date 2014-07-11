@@ -8,4 +8,4 @@
     - { role: common, root_password: "{{ root_password }}" }
     - { role: mysql, mysql_root_password: "{{ mysql_root_password}}" }
     - { role: elkarbackup, version: stable}
-    #- { role: prepare-vm}
+    - { role: dev}

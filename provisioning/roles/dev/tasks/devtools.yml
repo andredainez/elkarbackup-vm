@@ -1,0 +1,8 @@
+- name: install devtools
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - git
+    - vim
+
+- name: enable syntax highlighting
+  lineinfile: dest=/etc/vim/vimrc regexp="^\"syntax on" line="syntax on"

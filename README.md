@@ -44,11 +44,16 @@ $ vagrant up
 $ vagrant ssh
 ```
 
+You can modify ElkarBackup source on `/opt/elkarbackup` and you will see your changes inmediatelly in your browser at http://192.168.33.10/elkarbackup
+
+
 ### Troubleshooting
 
-Unknown SSH error? Try this:
+**SSH encountered an unknown error during the connection**.
 
-Create file _.ssh/config_:
+You can try again with `vagrant provision` or you can try this:
+
+Create file `.ssh/config`:
 
 ```
 Host 127.0.0.1
