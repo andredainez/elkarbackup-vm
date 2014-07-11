@@ -5,9 +5,7 @@ We are using [VirtualBox](http://www.virtualbox.org), [Packer](http://www.packer
 **Packer** creates consistent images for multiple platforms in parallel. It's perfect for creating appliances and disposable product demos.
 
 Required:
- * VirtualBox 4.1.12 or newer
- * ~~Packer 0.6.0 or higher~~ => Downloaded by bootstrap.sh
- * ~~Ansible 1.6 or higher~~  => Downloaded by the VM
+ * VirtualBox 4.1.12 or higher
 
 ## Instructions
 
@@ -36,8 +34,15 @@ We also use this code for developing or testing purposes, thanks to [Vagrant](ht
 
 Required:
  * Vagrant 1.6.2 or higher
+ * Ansible 1.6 or higher
 
-TO DO
+We will use an empty Debian Wheezy Vagrant box and some Ansible roles to generate our development environment:
+
+```bash
+$ cd dev
+$ vagrant up
+$ vagrant ssh
+```
 
 ### Troubleshooting
 
