@@ -10,10 +10,12 @@ Required:
 ## Instructions
 
 ```bash
+# Clone elkarbackup-vm (if you prefer, you can download the zip file)
+$ git@github.com:elkarbackup/elkarbackup-vm.git
 # Download dependencies
-./bootstrap.sh
+$ ./bootstrap.sh
 # Build VM image
-./build.sh
+$ ./build.sh
 ```
 
 An updated ElkarBackup virtual machine, compatible with **VirtualBox** or **VMWare** (not tested), will be created on `output-vm/elkarbackup-vm.ova`
@@ -39,13 +41,17 @@ Required:
 We will use an empty Debian Wheezy Vagrant box and some Ansible roles to generate our development environment:
 
 ```bash
+# Clone elkarbackup-vm (if you prefer, you can download the zip file)
+$ git@github.com:elkarbackup/elkarbackup-vm.git
+# Vagrant up!
 $ cd dev
 $ vagrant up
 $ vagrant ssh
 ```
 
-You can modify ElkarBackup source on `/opt/elkarbackup` and you will see your changes inmediatelly in your browser at http://192.168.33.10/elkarbackup
+You can modify ElkarBackup source on `/opt/elkarbackup` and you will see your changes immediatelly in your browser at http://192.168.33.10/elkarbackup
 
+If you liked that, you'll love `vagrant share`! :)
 
 ### Troubleshooting
 
