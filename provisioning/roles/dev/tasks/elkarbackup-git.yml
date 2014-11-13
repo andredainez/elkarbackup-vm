@@ -1,5 +1,5 @@
 - name: download elkarbackup from github
-  git: repo=https://github.com/antton/elkarbackup.git dest=/vagrant/elkarbackup
+  git: repo=https://github.com/elkarbackup/elkarbackup.git dest=/vagrant/elkarbackup
 
 - name: rename elkarbackup/src  dir
   command: mv /usr/share/elkarbackup/src /usr/share/elkarbackup/bak.src
