@@ -42,7 +42,7 @@ We will use an empty Debian Wheezy Vagrant box and some Ansible roles to generat
 
 ```bash
 # Clone elkarbackup-vm (if you prefer, you can download the zip file)
-$ git@github.com:elkarbackup/elkarbackup-vm.git
+$ git clone https://github.com/elkarbackup/elkarbackup-vm.git
 # Vagrant up!
 $ cd dev
 $ vagrant up
