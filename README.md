@@ -35,6 +35,7 @@ qemu-img convert -O qcow2 elkarbackup-vm-disk1.vmdk elkarbackup-vm.qcow2
 We also use this code for developing or testing purposes, thanks to [Vagrant](http://www.vagrantup.com)
 
 Required:
+ * VirtualBox 4.1 or higher
  * Vagrant 1.6.2 or higher
  * Ansible 1.6 or higher
 
