@@ -16,11 +16,11 @@ if [ -d "$d/packer" ]; then
 else
     mkdir $d/packer && cd $d/packer
     if [ "$os" = "Linux" ];then
-        wget https://dl.bintray.com/mitchellh/packer/0.6.0_linux_amd64.zip
-        unzip 0.6.0_linux_amd64.zip && rm -f 0.6.0_linux_amd64.zip
+	wget https://dl.bintray.com/mitchellh/packer/packer_0.7.5_linux_amd64.zip
+        unzip packer_0.7.5_linux_amd64.zip && rm -f packer_0.7.5_linux_amd64.zip
     elif [ "$os" = "Darwin" ];then
-        curl -L -O https://dl.bintray.com/mitchellh/packer/0.6.0_darwin_amd64.zip
-        unzip 0.6.0_darwin_amd64.zip && rm -f 0.6.0_darwin_amd64.zip
+        curl -L -O https://dl.bintray.com/mitchellh/packer/packer_0.7.5_darwin_amd64.zip
+        unzip packer_0.7.5_darwin_amd64.zip && rm -f packer_0.7.5_darwin_amd64.zip
     else
         echo "Not supported OS"
         exit
