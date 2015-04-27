@@ -13,7 +13,7 @@
     - elkarbackup
 
 - name: add elkarbackup repository
-  apt_repository: repo='deb http://elkarbackup.org/apt/debian wheezy main' state=present
+  apt_repository: repo='deb http://elkarbackup.org/apt/debian jessie main' state=present
   when: elkarbackup_installed|failed
   tags:
     - elkarbackup
