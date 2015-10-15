@@ -1,0 +1,1 @@
+ENV="stable" vagrant up

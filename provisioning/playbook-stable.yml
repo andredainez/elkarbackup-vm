@@ -1,5 +1,5 @@
 - hosts: all
-  #sudo: True
+  sudo: True
   vars:
     # root / elkarbackup
     #- root_password: '$6$rounds=100000$jnFsIZUdGtCNMuxe$ZlWJFAKkrPB8UoBRFEtyTXEoRnVPByiIkispYF.VRCS67CRinaTvPixeRcduuKzHd15UMpy4qQ6uDls24Dro4/'
