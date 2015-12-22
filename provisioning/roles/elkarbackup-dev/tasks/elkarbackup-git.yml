@@ -34,6 +34,9 @@
 - name: run bootstrap.sh
   command: ./bootstrap.sh chdir=/opt/elkarbackup
 
+- name: doctrine migrate
+  command: /usr/bin/php /usr/share/elkarbackup/app/console doctrine:migrations:migrate --no-interaction
+
 - name: clean cache
   command: /usr/bin/php /usr/share/elkarbackup/app/console cache:clear --env prod --no-debug
 
