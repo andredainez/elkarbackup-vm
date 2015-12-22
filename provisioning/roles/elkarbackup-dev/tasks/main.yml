@@ -1,4 +1,4 @@
 # file: elkarbackup/main.yml
 
 - include: devtools.yml
-- include: elkarbackup-git.yml
+- include: elkarbackup-git.yml repo={{ repo }}

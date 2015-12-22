@@ -1,0 +1,44 @@
+# working on v1.2-pre-alpha
+- name: download elkarbackup 1.2 pre-release deb package
+  get_url:
+    url="https://github.com/elkarbackup/elkarbackup/releases/download/v1.2.0-pre-alpha3/elkarbackup_1.2.0-Pre-Alpha3_all.deb"
+    dest="/tmp/elkarbackup-1.2-pre-release.deb"
+
+- name: install elkarbackup 1.2 pre-release deb package
+  apt: deb="/tmp/elkarbackup-1.2-pre-release.deb"
+
+- name: download elkarbackup from github
+  git: repo={{ repo }} dest=/opt/elkarbackup
+
+- name: rename elkarbackup/app dir
+  command: mv /usr/share/elkarbackup/app /usr/share/elkarbackup/bak.app
+
+- name: rename elkarbackup/src  dir
+  command: mv /usr/share/elkarbackup/src /usr/share/elkarbackup/bak.src
+
+- name: rename elkarbackup/web dir
+  command: mv /usr/share/elkarbackup/web /usr/share/elkarbackup/bak.web
+
+- name: link elkarbackup/app to last git code
+  file: src=/opt/elkarbackup/app dest=/usr/share/elkarbackup/app state=link
+
+- name: link elkarbackup/src to last git code
+  file: src=/opt/elkarbackup/src dest=/usr/share/elkarbackup/src state=link
+
+- name: link elkarbackup/web to last git code
+  file: src=/opt/elkarbackup/web dest=/usr/share/elkarbackup/web state=link
+
+- name: copy parameters.yml
+  command: cp /usr/share/elkarbackup/bak.app/config/parameters.yml /opt/elkarbackup/app/config
+
+- name: run bootstrap.sh
+  command: ./bootstrap.sh chdir=/opt/elkarbackup
+
+- name: clean cache
+  command: /usr/bin/php /usr/share/elkarbackup/app/console cache:clear --env prod --no-debug
+
+- name: dump all assets
+  command: /usr/bin/php /usr/share/elkarbackup/app/console assetic:dump
+
+- name: invalidate sessions
+  command: rm -rf /var/lib/elkarbackup/sessions/*
