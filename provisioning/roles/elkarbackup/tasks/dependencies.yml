@@ -8,3 +8,4 @@
     - php5-mysql
     - acl
     - bzip2
+    - libssh2-php
