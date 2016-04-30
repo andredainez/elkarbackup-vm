@@ -3,7 +3,7 @@
 
 # Parse options
 options = {}
-options[:env] = ENV['ENV'] || "dev" # By default, ENV="dev"
+options[:env] = ENV['ENV'] || "stable" # By default, ENV="stable"
 
 
 Vagrant.configure("2") do |config|
