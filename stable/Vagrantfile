@@ -1,0 +1,26 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Parse options
+options = {}
+options[:env] = ENV['ENV'] || "dev" # By default, ENV="dev"
+
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "xezpeleta/jessie64"
+  config.ssh.username = "vagrant"
+  config.ssh.password = "vagrant"
+  config.vm.network :private_network, ip: "192.168.33.10"
+  config.vm.provider :virtualbox do |vb|
+    vb.name = "elkarbackup-stable"
+  #  vb.gui = true
+  end
+
+  config.vm.provision :ansible do |ansible|
+    ansible.playbook = "../provisioning/playbook-#{options[:env]}.yml"
+    ansible.inventory_path = "../provisioning/hosts-vagrant"
+    ansible.limit = 'all'
+    ansible.host_key_checking = false
+    ansible.verbose = false
+  end
+end
