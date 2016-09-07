@@ -1,19 +1,11 @@
-# working on v1.2-beta
-- name: download elkarbackup 1.2 beta deb package
-  get_url:
-    url="https://github.com/elkarbackup/elkarbackup/releases/download/elkarbackup_1.2.0-beta1/elkarbackup_1.2.0-Beta1_all.deb"
-    dest="/tmp/elkarbackup-1.2-beta.deb"
-
-- name: install elkarbackup 1.2 beta deb package
-  apt: deb="/tmp/elkarbackup-1.2-beta.deb"
-
+# Download and configure elkarbackup from Github
 - name: download elkarbackup from github
   git: repo={{ repo }} dest=/opt/elkarbackup
 
 - name: rename elkarbackup/app dir
   command: mv /usr/share/elkarbackup/app /usr/share/elkarbackup/bak.app
 
-- name: rename elkarbackup/src  dir
+- name: rename elkarbackup/src dir
   command: mv /usr/share/elkarbackup/src /usr/share/elkarbackup/bak.src
 
 - name: rename elkarbackup/web dir
