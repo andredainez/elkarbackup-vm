@@ -14,8 +14,8 @@ if [ -d "output-vm" ];then
 fi
 
 
-if packer validate elkarbackup-wheezy.json; then
-    packer build elkarbackup-wheezy.json
+if packer validate elkarbackup-jessie.json; then
+    packer build elkarbackup-jessie.json
 else
     "Incorrect json configuration file"
     exit

@@ -8,10 +8,10 @@
 
   "builders": [{
     "type": "virtualbox-ovf",
-	"source_path": "base-vm/wheezy64.ova",
-	"ssh_username": "root",
-	"ssh_password": "root",
-	"ssh_wait_timeout": "60s",
+	"source_path": "base-vm/debian-jessie.ova",
+	"ssh_username": "vagrant",
+	"ssh_password": "vagrant",
+	"ssh_wait_timeout": "80s",
 	"shutdown_command": "halt",
 	
     "vm_name": "elkarbackup-vm",
@@ -23,13 +23,12 @@
     {
     "type": "shell",
     "inline": [
-      "apt-get update",
-      "apt-get -y install python-pip python-dev",
-      "pip install ansible"
+      "sudo apt-get update",
+      "sudo apt-get -y install ansible"
     ]},
     {
       "type": "ansible-local",
-      "playbook_file": "provisioning/playbook.yml",
+      "playbook_file": "provisioning/playbook-stable.yml",
       "role_paths": [
           "provisioning/roles/common",
           "provisioning/roles/mysql",

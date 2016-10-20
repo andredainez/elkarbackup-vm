@@ -1,5 +1,6 @@
 # Vagrant stuff
 /packer/
+/packer-cache/
 /base-vm/
 /output-vm/
 .vagrant

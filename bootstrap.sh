@@ -1,6 +1,6 @@
 #! /bin/sh
 
-URL_BASEVM='http://ftp.tknika.net/elkarbackup/wheezy64.tar.gz'
+URL_BASEVM='https://github.com/xezpeleta/vagrant-debian-jessie-64/releases/download/v8.6/debian-jessie.ova'
 
 
 d=$(pwd)
@@ -16,11 +16,11 @@ if [ -d "$d/packer" ]; then
 else
     mkdir $d/packer && cd $d/packer
     if [ "$os" = "Linux" ];then
-	wget https://dl.bintray.com/mitchellh/packer/packer_0.7.5_linux_amd64.zip
-        unzip packer_0.7.5_linux_amd64.zip && rm -f packer_0.7.5_linux_amd64.zip
+	wget https://releases.hashicorp.com/packer/0.10.2/packer_0.10.2_linux_amd64.zip
+        unzip packer*.zip && rm -f packer*.zip
     elif [ "$os" = "Darwin" ];then
-        curl -L -O https://dl.bintray.com/mitchellh/packer/packer_0.7.5_darwin_amd64.zip
-        unzip packer_0.7.5_darwin_amd64.zip && rm -f packer_0.7.5_darwin_amd64.zip
+        curl -L -O https://releases.hashicorp.com/packer/0.10.2/packer_0.10.2_darwin_amd64.zip
+        unzip packer*.zip && rm -f packer*.zip
     else
         echo "Not supported OS"
         exit
@@ -40,5 +40,4 @@ else
     else
         echo "Not supported OS"
     fi
-    tar xzvf wheezy64.tar.gz && rm -f wheezy64.tar.gz
 fi
