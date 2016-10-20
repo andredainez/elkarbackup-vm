@@ -12,7 +12,7 @@
 	"ssh_username": "vagrant",
 	"ssh_password": "vagrant",
 	"ssh_wait_timeout": "80s",
-	"shutdown_command": "halt",
+	"shutdown_command": "sudo shutdown now",
 	
     "vm_name": "elkarbackup-vm",
     "output_directory": "output-vm",
